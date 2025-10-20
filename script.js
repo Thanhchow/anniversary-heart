@@ -50,8 +50,11 @@ function initializePage() {
     $('.vietnamese-text').hide().delay(2000).fadeIn(1500);
 }
 
-// Particle Animation around Heart GIF
+// Particle Animation around Heart GIF - Mobile Optimized
 function startParticleAnimation() {
+    // Detect mobile device
+    const isMobile = window.innerWidth <= 768;
+    
     // Create particles periodically around the GIF
     function createHeartParticles() {
         const canvas = $('.heartbeat-canvas');
@@ -61,12 +64,16 @@ function startParticleAnimation() {
         const centerX = canvasRect.width / 2;
         const centerY = canvasRect.height / 2;
         
+        // Adjust particle count based on device
+        const particleCount = isMobile ? 30 : 50;
+        const particleSize = isMobile ? 2 : 3;
+        
         // Create particles around the heart GIF
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < particleCount; i++) {
             setTimeout(() => {
                 // Random position around the center
                 const angle = Math.random() * Math.PI * 2;
-                const distance = 50 + Math.random() * 100;
+                const distance = isMobile ? 30 + Math.random() * 60 : 50 + Math.random() * 100;
                 const x = centerX + Math.cos(angle) * distance;
                 const y = centerY + Math.sin(angle) * distance;
                 
@@ -78,7 +85,9 @@ function startParticleAnimation() {
                     background: `rgb(${255}, ${158 + Math.random() * 50}, ${196 + Math.random() * 30})`,
                     animationDelay: Math.random() * 1 + 's',
                     animationDuration: (2 + Math.random() * 1) + 's',
-                    zIndex: 5
+                    zIndex: 5,
+                    width: particleSize + 'px',
+                    height: particleSize + 'px'
                 });
                 
                 canvas.append(particle);
@@ -89,12 +98,15 @@ function startParticleAnimation() {
                         $(this).remove();
                     });
                 }, 3000);
-            }, i * 20); // Staggered creation
+            }, i * (isMobile ? 30 : 20)); // Slower creation on mobile
         }
     }
     
+    // Adjust interval based on device
+    const interval = isMobile ? 4000 : 3000;
+    
     // Start particle generation loop
-    setInterval(createHeartParticles, 3000); // Create particles every 3 seconds
+    setInterval(createHeartParticles, interval);
     
     // Initial particle burst
     setTimeout(createHeartParticles, 1000);
@@ -228,11 +240,16 @@ function addRandomFloatingHeart() {
     
     const floatingHeart = $('<div class="random-floating-heart"></div>');
     floatingHeart.text(randomHeart);
+    
+    // Mobile optimized sizing
+    const isMobile = window.innerWidth <= 768;
+    const fontSize = isMobile ? (1 + Math.random() * 0.5) + 'rem' : (1.5 + Math.random()) + 'rem';
+    
     floatingHeart.css({
         position: 'fixed',
         left: Math.random() * 100 + '%',
         bottom: '-50px',
-        fontSize: (1.5 + Math.random()) + 'rem',
+        fontSize: fontSize,
         zIndex: '5',
         pointerEvents: 'none',
         animation: 'randomFloat 6s linear forwards'

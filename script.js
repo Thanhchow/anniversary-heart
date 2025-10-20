@@ -37,8 +37,8 @@ $(document).ready(function() {
     // Add sparkle effects
     setInterval(addSparkle, 2000);
     
-    // Start the MATLAB-inspired heartbeat animation
-    startMatlabHeartbeatAnimation();
+    // Start the particle animation around the GIF
+    startParticleAnimation();
 });
 
 function initializePage() {
@@ -50,50 +50,10 @@ function initializePage() {
     $('.vietnamese-text').hide().delay(2000).fadeIn(1500);
 }
 
-// MATLAB-Inspired Heartbeat Animation - Fixed
-function startMatlabHeartbeatAnimation() {
-    // Mathematical heart parametric equations (inspired by MATLAB code)
-    function generateHeartPoints(numPoints) {
-        const points = [];
-        for (let i = 0; i < numPoints; i++) {
-            const t = Math.random() * Math.PI * 2;
-            // Parametric heart equations from MATLAB
-            const x = 16 * Math.pow(Math.sin(t), 3);
-            const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
-            points.push({ x: x, y: y, t: t });
-        }
-        return points;
-    }
-    
-    // Radial diffusion function (inspired by MATLAB rFunc1 and rFunc2)
-    function applyRadialDiffusion(point, radius) {
-        const distance = Math.sqrt(point.x * point.x + point.y * point.y);
-        const diffusionFactor = radius / 1.2 / Math.pow(distance + 1, 1.8);
-        const randomFactor = Math.random() / 10;
-        
-        return {
-            x: diffusionFactor * point.x + point.x + randomFactor,
-            y: diffusionFactor * point.y + point.y + randomFactor
-        };
-    }
-    
-    // Color function (inspired by MATLAB cFunc)
-    function generateHeartColor() {
-        const baseColor = [255, 158, 196]; // RGB values
-        const variation = [-39, -81, -56]; // Color variation
-        const randomFactor = Math.random();
-        
-        return `rgb(${
-            Math.max(0, Math.min(255, baseColor[0] + variation[0] * randomFactor))
-        }, ${
-            Math.max(0, Math.min(255, baseColor[1] + variation[1] * randomFactor))
-        }, ${
-            Math.max(0, Math.min(255, baseColor[2] + variation[2] * randomFactor))
-        })`;
-    }
-    
-    // Create particles periodically
-    function createHeartbeatParticles() {
+// Particle Animation around Heart GIF
+function startParticleAnimation() {
+    // Create particles periodically around the GIF
+    function createHeartParticles() {
         const canvas = $('.heartbeat-canvas');
         if (canvas.length === 0) return; // Safety check
         
@@ -101,20 +61,21 @@ function startMatlabHeartbeatAnimation() {
         const centerX = canvasRect.width / 2;
         const centerY = canvasRect.height / 2;
         
-        // Generate heart points (inspired by MATLAB tFunc and dFunc)
-        const heartPoints = generateHeartPoints(100); // Reduced for better performance
-        
-        heartPoints.forEach((point, index) => {
+        // Create particles around the heart GIF
+        for (let i = 0; i < 50; i++) {
             setTimeout(() => {
-                // Apply radial diffusion
-                const diffusedPoint = applyRadialDiffusion(point, 15 + Math.random() * 20);
+                // Random position around the center
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 50 + Math.random() * 100;
+                const x = centerX + Math.cos(angle) * distance;
+                const y = centerY + Math.sin(angle) * distance;
                 
                 // Create particle
                 const particle = $('<div class="particle"></div>');
                 particle.css({
-                    left: centerX + diffusedPoint.x + 'px',
-                    top: centerY + diffusedPoint.y + 'px',
-                    background: generateHeartColor(),
+                    left: x + 'px',
+                    top: y + 'px',
+                    background: `rgb(${255}, ${158 + Math.random() * 50}, ${196 + Math.random() * 30})`,
                     animationDelay: Math.random() * 1 + 's',
                     animationDuration: (2 + Math.random() * 1) + 's',
                     zIndex: 5
@@ -128,18 +89,15 @@ function startMatlabHeartbeatAnimation() {
                         $(this).remove();
                     });
                 }, 3000);
-            }, index * 5); // Faster staggered creation
-        });
+            }, i * 20); // Staggered creation
+        }
     }
     
     // Start particle generation loop
-    setInterval(createHeartbeatParticles, 2000); // Create particles every 2 seconds
+    setInterval(createHeartParticles, 3000); // Create particles every 3 seconds
     
     // Initial particle burst
-    setTimeout(createHeartbeatParticles, 500);
-    
-    // Additional particle burst for immediate visibility
-    setTimeout(createHeartbeatParticles, 1000);
+    setTimeout(createHeartParticles, 1000);
 }
 
 function createHeartExplosion() {
@@ -182,11 +140,11 @@ function createHeartExplosion() {
 
 function showLoveMessage() {
     const messages = [
-        "I love you more than words can express! 💕",
-        "You are my everything! 💖",
-        "Forever and always! 💗",
-        "My heart belongs to you! 💝",
-        "You make my world beautiful! 💘"
+        "Anh yêu em hơn cả lời nói có thể diễn tả! 💕",
+        "Em là tất cả của anh! 💖",
+        "Mãi mãi và luôn luôn! 💗",
+        "Trái tim anh thuộc về em! 💝",
+        "Em làm thế giới của anh trở nên đẹp đẽ! 💘"
     ];
     
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
@@ -225,7 +183,11 @@ function showSpecialMessage() {
         "Em là tình yêu của anh! 💕",
         "Anh yêu em rất nhiều! 💖",
         "Chúc em ngày 20-10 vui vẻ! 💗",
-        "Em là người phụ nữ tuyệt vời nhất! 💝"
+        "Em là người phụ nữ tuyệt vời nhất! 💝",
+        "Em là ánh sáng trong cuộc đời anh! 💘",
+        "Cảm ơn em vì đã là vợ của anh! 💓",
+        "Em là niềm hạnh phúc của anh! 💞",
+        "Anh sẽ yêu em mãi mãi! 💟"
     ];
     
     const randomMessage = vietnameseMessages[Math.floor(Math.random() * vietnameseMessages.length)];

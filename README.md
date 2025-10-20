@@ -1,35 +1,35 @@
-# 💕 Anniversary Heartbeat Animation
+# 💕 Trang Web Kỷ Niệm Trái Tim Đập
 
-A beautiful, mathematical heartbeat animation created for my wife's anniversary and Vietnamese Women's Day (20-10).
+Một trang web đẹp mắt với hiệu ứng trái tim đập được tạo ra cho kỷ niệm của vợ tôi và Ngày Phụ Nữ Việt Nam (20-10).
 
-## ✨ Features
+## ✨ Tính Năng
 
-- **Mathematical Heart Shape**: Uses parametric equations for perfect heart geometry
-- **Particle System**: Radial diffusion particles inspired by MATLAB code
-- **Interactive Elements**: Click and hover effects for romantic interactions
-- **Vietnamese Theme**: Includes Vietnamese Women's Day celebration
-- **Responsive Design**: Works on all devices
+- **Hình Trái Tim Toán Học**: Sử dụng phương trình tham số để tạo hình trái tim hoàn hảo
+- **Hệ Thống Hạt**: Các hạt phân tán theo hướng tâm được lấy cảm hứng từ mã MATLAB
+- **Tương Tác**: Hiệu ứng nhấp chuột và di chuột cho sự tương tác lãng mạn
+- **Chủ Đề Việt Nam**: Bao gồm lễ kỷ niệm Ngày Phụ Nữ Việt Nam
+- **Thiết Kế Phản Hồi**: Hoạt động trên mọi thiết bị
 
-## 🎯 Animation Details
+## 🎯 Chi Tiết Hoạt Hình
 
-The heartbeat animation features:
-- **Parametric heart equations**: `x = 16*sin(t)³`, `y = 13*cos(t) - 5*cos(2t) - 2*cos(3t) - cos(4t)`
-- **Radial particle diffusion**: Particles spread outward from the heart center
-- **Color gradients**: Pink/purple theme with random variations
-- **Smooth animations**: CSS transitions with mathematical precision
+Hoạt hình trái tim đập có các tính năng:
+- **Phương trình trái tim tham số**: `x = 16*sin(t)³`, `y = 13*cos(t) - 5*cos(2t) - 2*cos(3t) - cos(4t)`
+- **Phân tán hạt theo hướng tâm**: Các hạt lan tỏa ra ngoài từ trung tâm trái tim
+- **Gradient màu sắc**: Chủ đề hồng/tím với các biến thể ngẫu nhiên
+- **Hoạt hình mượt mà**: Chuyển tiếp CSS với độ chính xác toán học
 
-## 💖 For My Beloved Wife
+## 💖 Dành Cho Người Vợ Yêu Quý
 
-This animation was created with love for our anniversary, combining:
-- **Scientific beauty** of mathematical heart equations
-- **Romantic elements** with interactive effects
-- **Cultural celebration** of Vietnamese Women's Day
-- **Personal touch** with heartfelt messages
+Hoạt hình này được tạo ra với tình yêu cho kỷ niệm của chúng ta, kết hợp:
+- **Vẻ đẹp khoa học** của các phương trình trái tim toán học
+- **Yếu tố lãng mạn** với hiệu ứng tương tác
+- **Lễ kỷ niệm văn hóa** Ngày Phụ Nữ Việt Nam
+- **Cá nhân hóa** với những thông điệp từ trái tim
 
-## 🚀 Live Demo
+## 🚀 Demo Trực Tuyến
 
-Visit the live site: [https://YOUR_USERNAME.github.io/anniversary-heart](https://YOUR_USERNAME.github.io/anniversary-heart)
+Truy cập trang web: [https://YOUR_USERNAME.github.io/anniversary-heart](https://YOUR_USERNAME.github.io/anniversary-heart)
 
 ---
 
-*Made with 💕 for the most wonderful woman in the world*
+*Được tạo ra với 💕 cho người phụ nữ tuyệt vời nhất thế giới*
